@@ -1,0 +1,129 @@
+# Restaurante El Buen Comer - Don Chucho
+
+Sistema web para la gestión e interacción digital del menú y servicios del restaurante **"El Buen Comer"**, desarrollado en Python utilizando el framework Flask y maquetado con Bootstrap 5.3.
+
+## Arquitectura del proyecto
+
+El proyecto implementa la arquitectura **MVC (Modelo-Vista-Controlador)**, estructurada mediante **Blueprints de Flask**. El entorno de desarrollo aísla sus librerías mediante la carpeta del entorno virtual local `.venv`.
+
+### Estructura de carpetas
+
+```
+restaurante_el_buen_comer/
+├── .venv/                  # Entorno virtual local de Python (excluido de Git)
+├── app.py                  # Punto de entrada de la aplicación e inicialización
+├── config.py               # Variables de entorno y configuración del servidor
+├── models/                 # MODELO: Manejo y definición de datos (ORM)
+│   ├── __init__.py
+│   └── inventario.py       # Definición de estructuras (Platos, Categorías, etc.)
+├── routes/                 # CONTROLADOR: Lógica de negocio y endpoints
+│   ├── __init__.py
+│   ├── main_routes.py      # Rutas del cliente (Inicio, Menú, Contacto)
+│   └── admin_routes.py     # Rutas administrativas
+├── static/                 # VISTA: Recursos estáticos
+│   ├── css/                # Hojas de estilo personalizadas
+│   └── images/             # Imágenes estáticas del sitio
+│       ├── categorias/
+│       └── platos/
+└── templates/              # VISTA: Plantillas Jinja2
+    ├── base.html           # Plantilla contenedora base (Navbar, Footer, Bootstrap CDN)
+    ├── index.html          # Página principal
+    └── menu.html           # Catálogo del menú
+```
+
+## Tecnologías utilizadas
+
+| Tecnología        | Descripción                                                            |
+| ----------------- | ---------------------------------------------------------------------- |
+| **Python 3.x**    | Lenguaje de programación utilizado dentro del entorno virtual `.venv`. |
+| **Flask**         | Framework web para el desarrollo del backend.                          |
+| **Jinja2**        | Motor de plantillas para el renderizado de páginas HTML.               |
+| **HTML5**         | Estructura de las páginas web.                                         |
+| **CSS3**          | Estilos y personalización visual.                                      |
+| **Bootstrap 5.3** | Framework utilizado para el maquetado y diseño responsive.             |
+| **Git y GitHub**  | Herramientas para el control de versiones y alojamiento del código.    |
+
+## Dependencias instaladas en `.venv`
+
+Todas las librerías necesarias se encuentran instaladas de manera aislada en la carpeta local `.venv`.
+
+| Paquete          | Versión | Descripción                                          |
+| ---------------- | ------- | ---------------------------------------------------- |
+| **Flask**        | 3.1.x   | Framework web principal.                             |
+| **Werkzeug**     | 3.1.x   | Servidor WSGI y manejo de peticiones HTTP.           |
+| **Jinja2**       | 3.1.x   | Motor de renderizado de plantillas HTML.             |
+| **Click**        | 8.5.x   | Interfaz de línea de comandos para scripts de Flask. |
+| **MarkupSafe**   | 3.0.x   | Seguridad y escapado de caracteres en HTML.          |
+| **Itsdangerous** | 2.2.x   | Manejo seguro de sesiones y datos firmados.          |
+| **Blinker**      | 1.9.x   | Sistema de soporte de eventos para Flask.            |
+
+## Inicialización y ejecución del proyecto
+
+Sigue los siguientes pasos para ejecutar la aplicación haciendo uso de tu entorno virtual `.venv`.
+
+### 1. Clonar el repositorio
+
+```
+git clone https://github.com/joretopa7-stack/Restaurante-El-Buen-Comer---Don-Chucho.git
+cd Restaurante-El-Buen-Comer---Don-Chucho
+```
+
+### 2. Activar el entorno virtual (`.venv`)
+
+Asegúrate de activar siempre el entorno virtual antes de instalar paquetes o ejecutar el servidor.
+
+**En Windows (PowerShell):**
+
+```
+.\.venv\Scripts\Activate.ps1
+```
+
+**En Windows (CMD):**
+
+```
+.\.venv\Scripts\activate.bat
+```
+
+**En Linux / macOS:**
+
+```
+source .venv/bin/activate
+```
+
+> **Nota:** Sabrás que el entorno está activo porque verás `(.venv)` al inicio de la línea de comandos en tu terminal.
+
+### 3. Instalar o verificar dependencias
+
+Con el entorno `(.venv)` activo, instala los requerimientos:
+
+```
+pip install -r requirements.txt
+```
+
+> **Nota:** Si aún no tienes `requirements.txt`, puedes instalar Flask directamente con:
+>
+> ```
+> pip install flask
+> ```
+
+### 4. Ejecutar el servidor de desarrollo
+
+Con el entorno `(.venv)` activo, ejecuta:
+
+```
+flask --app app.py run --debug
+```
+
+### 5. Abrir la aplicación
+
+Abre tu navegador e ingresa a:
+
+[**http://127.0.0.1:5000**](http://127.0.0.1:5000)
+
+---
+
+## Autor
+
+**Restaurante El Buen Comer - Don Chucho**
+
+Repositorio: [Restaurante El Buen Comer - Don Chucho](https://github.com/joretopa7-stack/Restaurante-El-Buen-Comer---Don-Chucho.git)

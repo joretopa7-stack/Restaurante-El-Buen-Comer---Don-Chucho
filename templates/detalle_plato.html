@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="detail-container">
+    <img src="{{ url_for('static', filename='images/' + plato.imagen) }}" alt="{{ plato.nombre }}">
+    <h2>{{ plato.nombre }}</h2>
+    <p><strong>Acompañamiento:</strong> {{ plato.acompanamiento }}</p>
+    <p class="price"><strong>Precio:</strong> ${{ "{:,}".format(plato.precio) }}</p>
+    <form action="{{ url_for('agregar_al_pedido', plato_id=plato.id) }}" method="POST">
+        <button type="submit" class="btn">Pedir Plato</button>
+    </form>
+    <br>
+    <a href="{{ url_for('categorias') }}" class="btn-secondary">Volver al Menú</a>
+</div>
+{% endblock %}

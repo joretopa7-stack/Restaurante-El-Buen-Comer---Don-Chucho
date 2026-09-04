@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Platos en {{ categoria.nombre }}</h2>
+<div class="grid-container">
+    {% for plato in platos %}
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/' + plato.imagen) }}" alt="{{ plato.nombre }}">
+        <h3>{{ plato.nombre }}</h3>
+        <a href="{{ url_for('detalle_plato', plato_id=plato.id) }}" class="btn">Ver Detalle</a>
+    </div>
+    {% endfor %}
+</div>
+<br>
+<a href="{{ url_for('categorias') }}" class="btn-secondary">Volver a Categorías</a>
+{% endblock %}
