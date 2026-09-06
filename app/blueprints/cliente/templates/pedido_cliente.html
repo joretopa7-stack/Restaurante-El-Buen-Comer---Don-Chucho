@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pedido - Mesa {{ mesa.numero if mesa else '?' }}</h2>
+{% if detalles %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Plato</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for det in detalles %}
+        <tr>
+            <td>{{ det.plato.nombre }}</td>
+            <td>{{ det.cantidad }}</td>
+            <td>${{ "{:,}".format(det.plato.precio) }}</td>
+            <td>
+                <span class="badge bg-{% if det.estado == 'ENTREGADO' %}success{% elif det.estado == 'CANCELADO' %}danger{% elif det.estado == 'PEDIDO' %}secondary{% elif det.estado == 'ACEPTADO' %}info{% elif det.estado == 'POR_PREPARAR' %}warning{% elif det.estado == 'PREPARANDOSE' %}primary{% elif det.estado == 'TERMINADO' %}success{% endif %}">
+                    {{ det.estado }}
+                </span>
+            </td>
+            <td>
+                {% if det.estado in ['PEDIDO', 'ACEPTADO'] %}
+                <a href="{{ url_for('cliente.cancelar_plato', detalle_id=det.id) }}" class="btn btn-danger btn-sm">Cancelar</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="3">Total</th>
+            <th colspan="2">${{ "{:,}".format(total) }}</th>
+        </tr>
+    </tfoot>
+</table>
+<a href="{{ url_for('cliente.categorias') }}" class="btn btn-primary">Agregar más platos</a>
+<a href="{{ url_for('cliente.index') }}" class="btn btn-secondary">Volver al inicio</a>
+{% else %}
+<p>No hay platos en este pedido.</p>
+<a href="{{ url_for('cliente.categorias') }}" class="btn btn-primary">Explorar menú</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Mesas</h2>
+<div class="row">
+    {% for mesa in mesas %}
+    <div class="col-md-3 mb-3">
+        <div class="card {% if mesa.estado == 'ocupada' %}border-warning{% else %}border-success{% endif %}">
+            <div class="card-body text-center">
+                <h5 class="card-title">Mesa {{ mesa.numero }}</h5>
+                <p>Estado: <strong>{{ mesa.estado|upper }}</strong></p>
+                <a href="{{ url_for('mesero.detalle_mesa', num_mesa=mesa.numero) }}" class="btn btn-primary">Ver pedido</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mx-auto" style="max-width: 600px;">
+    <img src="{{ url_for('static', filename='images/' + plato.imagen) }}" class="card-img-top" alt="{{ plato.nombre }}">
+    <div class="card-body">
+        <h2 class="card-title">{{ plato.nombre }}</h2>
+        <p><strong>Acompañamiento:</strong> {{ plato.acompanamiento }}</p>
+        <p class="h4 text-success">${{ "{:,}".format(plato.precio) }}</p>
+        <a href="{{ url_for('cliente.pedir_plato', plato_id=plato.id) }}" class="btn btn-warning btn-lg">Pedir este plato</a>
+        <a href="{{ url_for('cliente.categorias') }}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

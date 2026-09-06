@@ -1,86 +1,42 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #fcd5ce;
-    text-align: center;
+    background-color: #fdf6f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-header {
-    background-color: #8b0000;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+.navbar {
+    background-color: #8b0000 !important;
 }
-
-.welcome-container, .detail-container {
-    background: rgb(119, 13, 13);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 500px;
-    margin: auto;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.navbar-brand {
+    font-weight: bold;
 }
-
-.hero-img, .detail-container img {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
 .card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 200px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
-
-.card img {
-    width: 100%;
-    height: 120px;
+.card:hover {
+    transform: scale(1.02);
+}
+.card-img-top {
+    height: 180px;
     object-fit: cover;
-    border-radius: 4px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
-
-.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #ffd035;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+.btn-primary {
+    background-color: #c0392b;
+    border-color: #c0392b;
 }
-
-.btn-secondary {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #c71a03;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 15px;
+.btn-primary:hover {
+    background-color: #a93226;
+    border-color: #a93226;
 }
-
-.order-list {
-    list-style: none;
-    padding: 0;
+.btn-warning {
+    background-color: #f1c40f;
+    border-color: #f1c40f;
 }
-
-.order-list li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+.badge {
+    font-size: 0.9rem;
+}
+.alert {
+    border-radius: 8px;
 }

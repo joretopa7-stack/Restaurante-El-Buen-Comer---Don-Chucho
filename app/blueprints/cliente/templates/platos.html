@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center">{{ categoria.nombre }}</h2>
+<div class="row">
+    {% for plato in platos %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <img src="{{ url_for('static', filename='images/' + plato.imagen) }}" class="card-img-top" alt="{{ plato.nombre }}">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ plato.nombre }}</h5>
+                <a href="{{ url_for('cliente.detalle_plato', plato_id=plato.id) }}" class="btn btn-primary">Ver detalle</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<a href="{{ url_for('cliente.categorias') }}" class="btn btn-secondary">Volver</a>
+{% endblock %}

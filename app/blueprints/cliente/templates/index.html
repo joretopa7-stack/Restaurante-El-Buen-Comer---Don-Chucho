@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container text-center mt-5">
+    <h1>🍽️ El Buen Comer - Don Chucho</h1>
+    <img src="{{ url_for('static', filename='images/platos/bienvenida.jpg') }}" alt="Bienvenida" class="img-fluid rounded my-4" style="max-height: 300px;">
+    <p>¡Bienvenido! Disfruta de nuestra cocina tradicional.</p>
+    <a href="{{ url_for('cliente.categorias') }}" class="btn btn-primary btn-lg">Ver Menú</a>
+</div>
+{% endblock %}

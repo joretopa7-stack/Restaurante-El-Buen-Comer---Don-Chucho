@@ -1,13 +1,12 @@
 from app.extensions import db
-from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class Usuario(UserMixin, db.Model):
+class Usuario(db.Model):
     __tablename__ = 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(80), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
-    rol = db.Column(db.String(20), nullable=False)  # 'cliente', 'mesero', 'cocina'
+    rol = db.Column(db.String(20), nullable=False)  # 'mesero', 'cocina'
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

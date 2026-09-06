@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center">Categorías</h2>
+<div class="row">
+    {% for cat in categorias %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <img src="{{ url_for('static', filename='images/' + cat.imagen) }}" class="card-img-top" alt="{{ cat.nombre }}">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ cat.nombre }}</h5>
+                <a href="{{ url_for('cliente.platos', cat_key=cat.key) }}" class="btn btn-outline-primary">Ver platos</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

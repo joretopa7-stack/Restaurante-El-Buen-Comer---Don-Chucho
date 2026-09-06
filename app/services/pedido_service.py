@@ -42,7 +42,6 @@ class PedidoService:
         if not detalle:
             return None, "Detalle no encontrado"
 
-        # Validaciones según el rol
         if rol == 'cliente':
             if detalle.estado not in ['PEDIDO', 'ACEPTADO']:
                 return None, "No puedes cancelar un plato que ya está en preparación"
@@ -72,7 +71,6 @@ class PedidoService:
 
         detalle.estado = nuevo_estado
         db.session.commit()
-        # Actualizar total del pedido
         pedido = Pedido.query.get(detalle.pedido_id)
         pedido.calcular_total()
         db.session.commit()

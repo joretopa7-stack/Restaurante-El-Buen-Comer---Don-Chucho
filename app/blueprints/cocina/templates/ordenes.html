@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Órdenes de cocina</h2>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Mesa</th><th>Plato</th><th>Estado</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+        {% for det in detalles %}
+        <tr>
+            <td>{{ det.num_mesa }}</td>
+            <td>{{ det.plato.nombre if det.plato else 'Desconocido' }}</td>
+            <td><span class="badge bg-...">{{ det.estado }}</span></td>
+            <td>
+                {% if det.estado == 'ACEPTADO' %}
+                <form method="POST" action="{{ url_for('cocina.preparar', detalle_id=det.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-warning btn-sm">Ordenar preparar</button>
+                </form>
+                {% elif det.estado == 'POR_PREPARAR' %}
+                <form method="POST" action="{{ url_for('cocina.preparando', detalle_id=det.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-primary btn-sm">Preparándose</button>
+                </form>
+                {% elif det.estado == 'PREPARANDOSE' %}
+                <form method="POST" action="{{ url_for('cocina.terminar', detalle_id=det.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-success btn-sm">Terminado</button>
+                </form>
+                {% elif det.estado == 'TERMINADO' %}
+                <span class="text-success">Listo para entregar</span>
+                {% endif %}
+                {% if det.estado not in ['CANCELADO', 'ENTREGADO'] %}
+                <form method="POST" action="{{ url_for('cocina.cancelar_cocina', detalle_id=det.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Cancelar</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
