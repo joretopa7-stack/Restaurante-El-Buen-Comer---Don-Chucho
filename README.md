@@ -10,25 +10,59 @@ El proyecto implementa la arquitectura **MVC (Modelo-Vista-Controlador)**, estru
 
 ```
 restaurante_el_buen_comer/
-├── .venv/                  # Entorno virtual local de Python (excluido de Git)
-├── app.py                  # Punto de entrada de la aplicación e inicialización
-├── config.py               # Variables de entorno y configuración del servidor
-├── models/                 # MODELO: Manejo y definición de datos (ORM)
-│   ├── __init__.py
-│   └── inventario.py       # Definición de estructuras (Platos, Categorías, etc.)
-├── routes/                 # CONTROLADOR: Lógica de negocio y endpoints
-│   ├── __init__.py
-│   ├── main_routes.py      # Rutas del cliente (Inicio, Menú, Contacto)
-│   └── admin_routes.py     # Rutas administrativas
-├── static/                 # VISTA: Recursos estáticos
-│   ├── css/                # Hojas de estilo personalizadas
-│   └── images/             # Imágenes estáticas del sitio
-│       ├── categorias/
-│       └── platos/
-└── templates/              # VISTA: Plantillas Jinja2
-    ├── base.html           # Plantilla contenedora base (Navbar, Footer, Bootstrap CDN)
-    ├── index.html          # Página principal
-    └── menu.html           # Catálogo del menú
+├── app/
+│   ├── __init__.py               # Fábrica create_app()
+│   ├── extensions.py             # db, login_manager, bcrypt (si se usa)
+│   ├── models/                   # Capa de datos (SQLAlchemy)
+│   │   ├── __init__.py
+│   │   ├── usuario.py
+│   │   ├── mesa.py
+│   │   ├── plato.py
+│   │   ├── pedido.py
+│   │   └── detalle_pedido.py
+│   ├── services/                 # Lógica de negocio (casos de uso)
+│   │   ├── __init__.py
+│   │   ├── pedido_service.py
+│   │   ├── mesa_service.py
+│   │   └── plato_service.py
+│   ├── blueprints/               # Módulos por rol (cada uno con sus rutas y templates)
+│   │   ├── cliente/
+│   │   │   ├── __init__.py
+│   │   │   ├── routes.py
+│   │   │   └── templates/
+│   │   │       ├── index.html
+│   │   │       ├── categorias.html
+│   │   │       ├── platos.html
+│   │   │       ├── detalle_plato.html
+│   │   │       ├── seleccionar_mesa.html
+│   │   │       └── pedido_cliente.html
+│   │   ├── mesero/
+│   │   │   ├── __init__.py
+│   │   │   ├── routes.py
+│   │   │   └── templates/
+│   │   │       ├── mesas.html
+│   │   │       ├── detalle_mesa.html
+│   │   │       └── factura.html
+│   │   └── cocina/
+│   │       ├── __init__.py
+│   │       ├── routes.py
+│   │       └── templates/
+│   │           ├── ordenes.html
+│   │           └── ...
+│   ├── static/                   # Recursos estáticos (CSS, JS, imágenes)
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   ├── js/
+│   │   │   └── main.js (opcional)
+│   │   └── images/
+│   │       ├── categorias/
+│   │       └── platos/
+│   └── templates/                # Plantillas globales (base, login)
+│       ├── base.html
+│       └── login.html
+├── config.py                     # Configuración (SECRET_KEY, SQLALCHEMY_DATABASE_URI, etc.)
+├── requirements.txt              # Dependencias (Flask, Flask-SQLAlchemy, Flask-Login, etc.)
+└── run.py                        # Punto de entrada: from app import create_app; app = create_app()
 ```
 
 ## Tecnologías utilizadas
