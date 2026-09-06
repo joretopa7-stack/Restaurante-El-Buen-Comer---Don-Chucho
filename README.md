@@ -11,21 +11,20 @@ El proyecto implementa la arquitectura **MVC (Modelo-Vista-Controlador)**, estru
 ```
 restaurante_el_buen_comer/
 ├── app/
-│   ├── __init__.py               # Fábrica create_app()
-│   ├── extensions.py             # db, login_manager, bcrypt (si se usa)
-│   ├── models/                   # Capa de datos (SQLAlchemy)
+│   ├── __init__.py
+│   ├── extensions.py
+│   ├── models/
 │   │   ├── __init__.py
 │   │   ├── usuario.py
 │   │   ├── mesa.py
 │   │   ├── plato.py
 │   │   ├── pedido.py
 │   │   └── detalle_pedido.py
-│   ├── services/                 # Lógica de negocio (casos de uso)
+│   ├── services/
 │   │   ├── __init__.py
 │   │   ├── pedido_service.py
-│   │   ├── mesa_service.py
-│   │   └── plato_service.py
-│   ├── blueprints/               # Módulos por rol (cada uno con sus rutas y templates)
+│   │   └── mesa_service.py
+│   ├── blueprints/
 │   │   ├── cliente/
 │   │   │   ├── __init__.py
 │   │   │   ├── routes.py
@@ -47,22 +46,20 @@ restaurante_el_buen_comer/
 │   │       ├── __init__.py
 │   │       ├── routes.py
 │   │       └── templates/
-│   │           ├── ordenes.html
-│   │           └── ...
-│   ├── static/                   # Recursos estáticos (CSS, JS, imágenes)
+│   │           └── ordenes.html
+│   ├── static/
 │   │   ├── css/
 │   │   │   └── style.css
 │   │   ├── js/
-│   │   │   └── main.js (opcional)
 │   │   └── images/
 │   │       ├── categorias/
 │   │       └── platos/
-│   └── templates/                # Plantillas globales (base, login)
+│   └── templates/
 │       ├── base.html
 │       └── login.html
-├── config.py                     # Configuración (SECRET_KEY, SQLALCHEMY_DATABASE_URI, etc.)
-├── requirements.txt              # Dependencias (Flask, Flask-SQLAlchemy, Flask-Login, etc.)
-└── run.py                        # Punto de entrada: from app import create_app; app = create_app()
+├── config.py
+├── requirements.txt
+└── run.py
 ```
 
 ## Tecnologías utilizadas
